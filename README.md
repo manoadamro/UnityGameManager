@@ -67,6 +67,9 @@ Will also serialize pretty much anything (as long as its serializable)
   
 *(only one instance allowed per scene)*
 
+  ### Config:
+  * __File Name (string):__ the name of the file to store game save data in. (This will be at Application.DataPath)
+
   ### Serialization
   * to serialize sometime to a byte array:
   
