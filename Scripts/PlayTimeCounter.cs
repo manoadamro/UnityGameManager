@@ -15,9 +15,9 @@ public class PlayTimeCounter : MonoBehaviour {
 	}
 	void Start() {
 
-		PersistanceManager.OnSave += OnSave;
-		PersistanceManager.OnLoad += OnLoad;
-		GameController.onPause += OnPause;
+		PersistenceManager.OnSave += OnSave;
+		PersistenceManager.OnLoad += OnLoad;
+		GameController.OnPause += OnPause;
 		GameController.OnResume += OnResume;
 	}
 		
@@ -39,7 +39,7 @@ public class PlayTimeCounter : MonoBehaviour {
 
 	void OnSave (Dictionary<string, byte[]> data) {
 		SaveData saveData = new SaveData () { elapsedTime = this.elapsedTime };
-		byte[] bytes = PersistanceManager.Serialize (saveData);
+		byte[] bytes = PersistenceManager.Serialize (saveData);
 
 		if (data.ContainsKey (GetType ().ToString ())) {
 			data [GetType ().ToString ()] = bytes;
@@ -49,7 +49,7 @@ public class PlayTimeCounter : MonoBehaviour {
 		}
 	}
 	void OnLoad (Dictionary<string, byte[]> data) {
-		SaveData saveData = PersistanceManager.DeSerialize<SaveData> (data [GetType ().ToString ()]);
+		SaveData saveData = PersistenceManager.DeSerialize<SaveData> (data [GetType ().ToString ()]);
 		this.elapsedTime = saveData.elapsedTime;
 	}
 }

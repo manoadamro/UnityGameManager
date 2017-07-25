@@ -73,11 +73,11 @@ public partial class GameClock : MonoBehaviour {
 	void Start() {
 
 		// receive callback when game saves or loads
-		PersistanceManager.OnSave += OnSave;
-		PersistanceManager.OnLoad += OnLoad;
+		PersistenceManager.OnSave += OnSave;
+		PersistenceManager.OnLoad += OnLoad;
 
 		// receive callback when game pauses or resumes
-		GameController.onPause += OnPause;
+		GameController.OnPause += OnPause;
 		GameController.OnResume += OnResume;
 	}
 
@@ -123,7 +123,7 @@ public partial class GameClock : MonoBehaviour {
 		SaveData saveData = new SaveData () { elapsedTime = this.elapsedTime, startDate = this.startDate, startDT = this.startDT  };
 
 		// serialize it
-		byte[] bytes = PersistanceManager.Serialize (saveData);
+		byte[] bytes = PersistenceManager.Serialize (saveData);
 
 		// if this has been saved before
 		if (data.ContainsKey (GetType ().ToString ())) {
@@ -145,7 +145,7 @@ public partial class GameClock : MonoBehaviour {
 	/// </summary>
 	void OnLoad (Dictionary<string, byte[]> data) {
 
-		SaveData saveData = PersistanceManager.DeSerialize<SaveData> (data [GetType ().ToString ()]);
+		SaveData saveData = PersistenceManager.DeSerialize<SaveData> (data [GetType ().ToString ()]);
 		this.elapsedTime = saveData.elapsedTime;
 		this.startDate = saveData.startDate;
 		this.startDT = saveData.startDT;

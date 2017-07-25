@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 
 
-[CustomEditor(typeof(PersistanceManager))]
+[CustomEditor(typeof(PersistenceManager))]
 [CanEditMultipleObjects]
 public class PersistanceManagerEditor : Editor {
 
@@ -22,13 +22,13 @@ public class PersistanceManagerEditor : Editor {
 		if (Application.isPlaying) {
 
 			if (GUILayout.Button("Save Game")) {
-				if (!PersistanceManager.SaveGame ("Editor")) {
-					PersistanceManager.NewGameSave ("Editor");
-					PersistanceManager.SaveGame("Editor");
+				if (!PersistenceManager.SaveGame ("Editor")) {
+					PersistenceManager.NewGameSave ("Editor");
+					PersistenceManager.SaveGame("Editor");
 				}
 			}
 			if (GUILayout.Button("Load Game")) {
-				PersistanceManager.LoadGame("Editor");
+				PersistenceManager.LoadGame("Editor");
 			}
 		}
 		serializedObject.ApplyModifiedProperties();
