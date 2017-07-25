@@ -20,6 +20,8 @@ Responsible for pausing/resuming the game.
 
 
   ### Callbacks
+  The callback methods should have no parameters
+  
   * to receive a callback when game is paused:
 
         GameController.OnPause += SomeMethod
@@ -87,6 +89,25 @@ Will also serialize pretty much anything (as long as its serializable)
   * resuming the game:
 
         PersistenceManager.LoadGame(string gameSaveName);
+  
+  ### Callbacks
+  callback methods should take Dictionary<string, byte[]> as their only parameter.
+  game data is usually stored by some dort of manager class, so the key would almost always be
+  
+        GetType().ToString()
+        
+  and the byte array would be a serialized something.
+  
+  
+  * to receive a callback when game is saving:
+
+        PersistenceManager.OnSave += SomeMethod
+
+  * to receive a callback when game is loading:
+
+        PersistenceManager.OnLoad += SomeMethod
+
+    *use -= to stop receiving callbacks*
   
 ---
   
