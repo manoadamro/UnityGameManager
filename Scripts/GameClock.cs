@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 
-public partial class GameClock : MonoBehaviour {
+public class GameClock : MonoBehaviour {
 
 	[Serializable]
 	public struct Date {

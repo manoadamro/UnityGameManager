@@ -8,7 +8,7 @@ using UnityEngine;
 /// <summary>
 /// Game controller: core.
 /// </summary>
-public class PersistanceManager : MonoBehaviour {
+public class PersistenceManager : MonoBehaviour {
 
 	[Serializable]
 	public class GameSave {
@@ -18,7 +18,7 @@ public class PersistanceManager : MonoBehaviour {
 		public Dictionary<string, byte[]> data;
 	}
 
-	static PersistanceManager instance = null;
+	static PersistenceManager instance = null;
 	static BinaryFormatter binForm = new BinaryFormatter();
 
 	[SerializeField] string saveFileName;

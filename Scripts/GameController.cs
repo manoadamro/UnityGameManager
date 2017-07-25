@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour {
 	event Notification onPauseGame;
 
 	// adds callbacks to onPauseGame
-	public static event Notification onPause { add { instance.onPauseGame += value; } remove { instance.onPauseGame -= value; } }
+	public static event Notification OnPause { add { instance.onPauseGame += value; } remove { instance.onPauseGame -= value; } }
 
 	// stores callbacks for when game resumes
 	public event Notification onResumeGame;
