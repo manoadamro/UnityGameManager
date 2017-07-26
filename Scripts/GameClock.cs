@@ -16,35 +16,51 @@ public class GameClock : MonoBehaviour {
 	}
 
 
-	// singleton
+	/// <summary>
+	/// singleton
+	/// </summary>
 	static GameClock instance = null;
 
-	// should time accumulate while game is paused?
+	/// <summary>
+	/// should time accumulate while game is paused?
+	/// </summary>
 	[SerializeField] bool stopOnPause = true;
 
-	// X faster than real world time
+	/// <summary>
+	/// X faster than real world time
+	/// </summary>
 	[SerializeField] float baseMultiplier = 10f;
 
-	// in game speed settings
+	/// <summary>
+	/// in game speed settings
+	/// </summary>
 	[SerializeField] float[] speedMultipliers = new float[] {0f, 1f, 2f, 3f, 5f};
 
-	// current speed setting (index of speedMultipliers)
+	/// <summary>
+	/// current speed setting (index of speedMultipliers)
+	/// </summary>
 	int gameSpeedIndex = 1;
 
-	// in game starting date
+	/// <summary>
+	/// in game starting date
+	/// </summary>
 	[SerializeField] Date startDate = new Date () { year = 2010, month = 1, day = 1, hour = 9, minute = 0, second = 0};
 
-	// this is needed because unity will not serialize DateTime
+	/// <summary>
+	/// this is needed because unity will not serialize DateTime
+	/// </summary>
 	DateTime startDT;
 
-	// accumulated seconds
+	/// <summary>
+	/// accumulated seconds
+	/// </summary>
 	float elapsedTime = 0f;
 
 
 	/// <summary>
-	/// number of seconds (float) since start
+	/// time since start
 	/// </summary>
-	/// <value>The number of seconds since start</value>
+	/// <value>Time since start</value>
 	public static TimeSpan Epoch { get { return new TimeSpan (TimeSpan.TicksPerSecond * (long)instance.elapsedTime); } } 
 
 	/// <summary>
@@ -81,7 +97,9 @@ public class GameClock : MonoBehaviour {
 		GameController.OnResume += OnResume;
 	}
 
-	// Called by unity every frame. Adds accumulated time 
+	/// <summary>
+	/// Called by unity every frame. Adds accumulated time 
+	/// </summary>
 	void Update() { elapsedTime += UnityEngine.Time.deltaTime * baseMultiplier * speedMultipliers [gameSpeedIndex]; }
 
 	/// <summary>

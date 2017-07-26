@@ -5,15 +5,16 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 
-/// <summary>
-/// Game controller: core.
-/// </summary>
 public class GameController : MonoBehaviour {
 
-	// singleton
+	/// <summary>
+	/// singleton
+	/// </summary>
 	static GameController instance = null;
 
-	// is the game currently paused?
+	/// <summary>
+	/// is the game currently paused?
+	/// </summary>
 	[SerializeField] bool paused = false;
 
 
@@ -27,16 +28,24 @@ public class GameController : MonoBehaviour {
 		else { Debug.LogError ("Only 1 instance of GameController can exist per scene!"); }
 	}
 		
-	// stores callbacks for when game pauses
+	/// <summary>
+	/// stores callbacks for when game pauses
+	/// </summary>
 	event Notification onPauseGame;
 
-	// adds callbacks to onPauseGame
+	/// <summary>
+	/// adds callbacks to onPauseGame
+	/// </summary>
 	public static event Notification OnPause { add { instance.onPauseGame += value; } remove { instance.onPauseGame -= value; } }
 
-	// stores callbacks for when game resumes
+	/// <summary>
+	/// stores callbacks for when game resumes
+	/// </summary>
 	public event Notification onResumeGame;
 
-	// adds callbacks to onResumeGame
+	/// <summary>
+	/// adds callbacks to onResumeGame
+	/// </summary>
 	public static event Notification OnResume { add { instance.onResumeGame += value; } remove { instance.onResumeGame -= value; } }
 
 
